@@ -26,7 +26,7 @@
     <!-- Top emoji background -->
     <div class="pointer-events-none absolute inset-x-0 top-0 h-32 overflow-hidden">
       <span class="absolute left-3 top-4 text-4xl text-white/40 animate-float-up" style="animation-duration: 9s; animation-delay: 0s;">✨</span>
-      <span class="absolute left-24 top-8 text-5xl text-white/30 animate-float-up" style="animation-duration: 11s; animation-delay: 1s;">🌸</span>
+      <span class="absolute left-24 top-8 text-5xl text-white/30 animate-float-up" style="animation-duration: 11s; animation-delay: 1s;">🛵</span>
       <span class="absolute right-16 top-6 text-4xl text-white/35 animate-float-up" style="animation-duration: 10s; animation-delay: 0.5s;">💕</span>
       <span class="absolute right-6 top-14 text-3xl text-white/35 animate-float-up" style="animation-duration: 8s; animation-delay: 1.2s;">⭐</span>
     </div>
@@ -41,10 +41,9 @@
       </div>
 
       <h1 class="text-xl sm:text-2xl font-black leading-relaxed mb-2 text-rose-deep">
-        🌸 Mau ke <span class="text-pink-accent">BPN Go</span> bareng aku? 🌸
+         mau ga ke <span class="text-pink-accent">BPN Go</span> sama aku? 
       </h1>
       <p class="text-rose-mid text-sm sm:text-base mb-7">
-        Serius deh? Coba hover tombol biar makin seru ✨
       </p>
 
       <div class="flex items-center justify-center gap-3 flex-wrap">
@@ -53,7 +52,7 @@
           class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 font-extrabold text-white shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
           @click="goToSurprised"
         >
-          IYA dong! 🥰
+          IYA dong! 
         </button>
 
         <button
@@ -84,18 +83,18 @@
       class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'surprised' ? 'block animate-fade-in' : 'hidden'"
     >
-      <div class="text-5xl sm:text-[72px] mb-3.5">🥹</div>
+      <div class="text-5xl sm:text-[72px] mb-3.5">😆</div>
       <h1 class="text-lg sm:text-[26px] font-black mb-3 text-rose-deep">
-        WAIT LO BENERAN MAU?? 😭
+        Beneran mauuu
       </h1>
       <p class="text-rose-mid text-sm sm:text-base mb-9">
-        Gue udah siap-siap lo bakal nolak 😅
+        Gabisa dibatalin lohh
       </p>
       <button
         class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 sm:px-9 py-2.5 sm:py-3.5 text-sm sm:text-lg font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
         @click="page = 'details'"
       >
-        hehe lanjut dong →
+        oke lanjutttttt →
       </button>
     </div>
 
@@ -113,9 +112,10 @@
       <div class="grid justify-center gap-3 mb-6">
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm ">
           <span class="text-2xl leading-none">📅</span>
-          <div class="text-left">
+          <div class="text-left w-full">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tanggal</div>
-            <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.tanggal }}</div>
+            <div class="mt-1"><DatePicker v-model="selectedDate" /></div>
+            <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.tanggal }}</div>
           </div>
         </div>
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm">
@@ -146,7 +146,8 @@
 </template>
 
 <script setup>
-import { ref, reactive, onMounted, nextTick } from 'vue'
+import { ref, reactive, onMounted, nextTick, watch } from 'vue'
+import DatePicker from './DatePicker.vue'
 
 /* ══════════════════════════════════════════════════
  *  ✏️  GANTI INFO ACARA DI SINI
@@ -157,6 +158,21 @@ const info = reactive({
   jam: '08.00 WITA',
 })
 /* ══════════════════════════════════════════════════ */
+
+// Date picker state and formatting
+const selectedDate = ref(new Date())
+const weekdaysName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
+const monthsName = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember']
+
+function formatDate(d){
+  if(!d) return ''
+  const dayName = weekdaysName[d.getDay()]
+  return `${dayName}, ${d.getDate()} ${monthsName[d.getMonth()]} ${d.getFullYear()}`
+}
+
+watch(selectedDate, (d) => {
+  info.tanggal = formatDate(d)
+}, { immediate: true })
 
 const CONFETTI_COLORS = ['#ff6b9d', '#d63384', '#a855f7', '#fbbf24', '#34d399', '#60a5fa', '#fb7185', '#f472b6']
 const PARTICLE_EMOJIS = ['🌸', '✨', '💕', '⭐', '🎉', '🌟', '💫', '🎈']
