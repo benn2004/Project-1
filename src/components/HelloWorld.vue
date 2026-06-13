@@ -49,7 +49,7 @@
       <div class="flex items-center justify-center gap-3 flex-wrap">
         <button
           ref="yesBtnRef"
-          class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 font-extrabold text-white shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
+          class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 font-extrabold text-black shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
           @click="goToSurprised"
         >
           IYA dong! 
@@ -58,7 +58,7 @@
         <button
           v-if="!noEscaped"
           ref="noBtnRef"
-          class="rounded-full bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] px-6 py-3 font-bold text-white shadow-no transition duration-200 hover:-translate-y-0.5 active:scale-95"
+          class="rounded-full bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] px-6 py-3 font-bold text-black shadow-no transition duration-200 hover:-translate-y-0.5 active:scale-95"
           @mouseenter="moveNo"
           @touchstart.prevent="moveNo"
         >
@@ -69,7 +69,7 @@
       <button
         v-if="noEscaped"
         ref="noBtnRef"
-        class="fixed z-[999] bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] hover:shadow-lg active:scale-95 text-white border-none rounded-full px-5 sm:px-6.5 py-2 sm:py-3 text-xs sm:text-base font-bold cursor-pointer shadow-md select-none whitespace-nowrap transition-all duration-200"
+        class="fixed z-[999] bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] hover:shadow-lg active:scale-95 text-black border-none rounded-full px-5 sm:px-6.5 py-2 sm:py-3 text-xs sm:text-base font-bold cursor-pointer shadow-md select-none whitespace-nowrap transition-all duration-200"
         :style="{ left: noPos.x + 'px', top: noPos.y + 'px' }"
         @mouseenter="moveNo"
         @touchstart.prevent="moveNo"
@@ -109,7 +109,7 @@
         Glad you didn't say no
       </p>
       <p class="text-rose-mid text-xs sm:text-[13px] mb-6">
-        Btw, pilih tanggal sama jamnya
+        Btw, pilih tanggal sama jamnya, pilih 5 juli aja ( nonton konser )
       </p>
 
       <div class="flex flex-col gap-3 mb-6">
@@ -139,10 +139,10 @@
       </div>
 
       <p class="text-rose-mid text-sm sm:text-[15px] leading-loose">
-        Gue yang ngejemput ya 🥰<br />
-        <span class="text-base sm:text-xl" style="letter-spacing: 4px;">♥ ♥ ♥ ♥ ♥</span><br />
+        Ntar ku jemput yakk <br />
+        <span class="text-base sm:text-xl" style="letter-spacing: 4px;">------</span><br />
         <em class="text-xs text-rose-softer">
-          Normal people text, w bikin website. No big deal 😎
+          Normal people text, w bikin web. No big deal 😎
         </em>
       </p>
     </div>
