@@ -105,32 +105,35 @@
     >
       <div class="text-4xl sm:text-[56px] mb-2">🎉</div>
       <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">BPN Go!</h1>
-      <p class="text-pink-accent text-xs sm:text-[13px] font-bold mb-6">
-        Glad you didn't say no 💕
+      <p class="text-pink-accent text-xs sm:text-[13px] font-bold mb-2">
+        Glad you didn't say no
+      </p>
+      <p class="text-rose-mid text-xs sm:text-[13px] mb-6">
+        Btw, pilih tanggal sama jamnya
       </p>
 
       <div class="flex flex-col gap-3 mb-6">
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">📅</span>
           <div class="flex flex-col text-left w-full gap-1">
-            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tanggal</div>
+            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Date</div>
             <div class="w-full"><DatePicker v-model="selectedDate" /></div>
-            <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.tanggal }}</div>
+            <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.date }}</div>
           </div>
         </div>
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">📍</span>
           <div class="text-left">
-            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Lokasi</div>
-            <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.lokasi }}</div>
+            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Location</div>
+            <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.location }}</div>
           </div>
         </div>
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">⏰</span>
           <div class="flex flex-col text-left w-full gap-1">
-            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Jam</div>
+            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">At?</div>
             <div class="w-full"><TimePicker v-model="selectedTime" /></div>
-            <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.jam }}</div>
+            <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.time }}</div>
           </div>
         </div>
       </div>
@@ -139,7 +142,7 @@
         Gue yang ngejemput ya 🥰<br />
         <span class="text-base sm:text-xl" style="letter-spacing: 4px;">♥ ♥ ♥ ♥ ♥</span><br />
         <em class="text-xs text-rose-softer">
-          Normal people text, gue bikin website. No big deal 😎
+          Normal people text, w bikin website. No big deal 😎
         </em>
       </p>
     </div>
@@ -155,11 +158,10 @@ import TimePicker from './TimePicker.vue'
  *  ✏️  GANTI INFO ACARA DI SINI
  * ══════════════════════════════════════════════════ */
 const info = reactive({
-  tanggal: 'Sabtu, 5 Juli 2026',
-  lokasi: 'Bpn go event, citraland Balikpapan',
-  jam: '08.00 WITA',
+  date: 'Sabtu, 5 Juli 2026',
+  location: 'Bpn go event, citraland Balikpapan',
+  time: '08.00 WITA',
 })
-/* ══════════════════════════════════════════════════ */
 
 // Date & time picker state and formatting
 const selectedDate = ref(new Date(2026, 6, 5))
@@ -171,10 +173,10 @@ function formatTime(t){
 }
 
 watch(selectedTime, (val) => {
-  info.jam = formatTime(val)
+  info.time = formatTime(val)
 }, { immediate: true })
 const weekdaysName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
-const monthsName = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember']
+const monthsName = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 
 function formatDate(d){
   if(!d) return ''
@@ -183,7 +185,7 @@ function formatDate(d){
 }
 
 watch(selectedDate, (d) => {
-  info.tanggal = formatDate(d)
+  info.date = formatDate(d)
 }, { immediate: true })
 
 const CONFETTI_COLORS = ['#ff6b9d', '#d63384', '#a855f7', '#fbbf24', '#34d399', '#60a5fa', '#fb7185', '#f472b6']

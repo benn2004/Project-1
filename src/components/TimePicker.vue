@@ -1,10 +1,10 @@
 <template>
   <div class="w-full">
     <label class="sr-only">Pilih jam</label>
-    <div class="bg-purple-50 border border-purple-200 rounded-2xl shadow-sm px-4 py-3 h-12 flex items-center w-full focus-within:ring-2 focus-within:ring-purple-300 focus-within:border-purple-400">
-      <button @click="toggle" type="button" class="w-full text-left text-sm text-rose-deep flex items-center gap-2">
+    <div class="bg-purple-100 border border-purple-200 rounded-2xl shadow-sm px-4 py-3 h-12 flex items-center w-full focus-within:ring-2 focus-within:ring-purple-300 focus-within:border-purple-400">
+      <button @click="toggle" type="button" class="w-full text-left text-sm text-purple-800 font-semibold flex items-center gap-2">
         <span class="text-lg">⏰</span>
-        <span class="font-semibold">{{ display }}</span>
+        <span>{{ display }}</span>
       </button>
     </div>
 
@@ -16,8 +16,8 @@
           :key="t"
           @click="selectTime(t)"
           :class="[
-            'py-2 px-3 text-sm rounded-lg transition',
-            t === selectedTime ? 'bg-purple-200 text-rose-deep font-bold' : 'hover:bg-purple-50'
+            'py-2 px-3 text-sm rounded-lg transition text-rose-deep',
+            t === selectedTime ? 'bg-purple-600 text-white font-bold' : 'bg-purple-200 hover:bg-purple-300'
           ]"
         >
           <span class="block">{{ t }}</span>
