@@ -109,23 +109,23 @@
         Glad you didn't say no 💕
       </p>
 
-      <div class="grid justify-center gap-3 mb-6">
-        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm ">
+      <div class="flex flex-col gap-3 mb-6">
+        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">📅</span>
-          <div class="text-left w-full">
+          <div class="flex flex-col text-left w-full gap-1">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tanggal</div>
-            <div class="mt-1"><DatePicker v-model="selectedDate" /></div>
+            <div class="w-full"><DatePicker v-model="selectedDate" /></div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.tanggal }}</div>
           </div>
         </div>
-        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm">
+        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">📍</span>
           <div class="text-left">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Lokasi</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.lokasi }}</div>
           </div>
         </div>
-        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm">
+        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">⏰</span>
           <div class="text-left">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Jam</div>
@@ -160,7 +160,7 @@ const info = reactive({
 /* ══════════════════════════════════════════════════ */
 
 // Date picker state and formatting
-const selectedDate = ref(new Date())
+const selectedDate = ref(new Date(2026, 6, 5))
 const weekdaysName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
 const monthsName = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember']
 
