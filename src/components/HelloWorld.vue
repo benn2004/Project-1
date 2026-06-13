@@ -127,9 +127,10 @@
         </div>
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">⏰</span>
-          <div class="text-left">
+          <div class="flex flex-col text-left w-full gap-1">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Jam</div>
-            <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.jam }}</div>
+            <div class="w-full"><TimePicker v-model="selectedTime" /></div>
+            <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.jam }}</div>
           </div>
         </div>
       </div>
@@ -148,19 +149,30 @@
 <script setup>
 import { ref, reactive, onMounted, nextTick, watch } from 'vue'
 import DatePicker from './DatePicker.vue'
+import TimePicker from './TimePicker.vue'
 
 /* ══════════════════════════════════════════════════
  *  ✏️  GANTI INFO ACARA DI SINI
  * ══════════════════════════════════════════════════ */
 const info = reactive({
   tanggal: 'Sabtu, 5 Juli 2026',
-  lokasi: 'Lapangan Merdeka, Balikpapan',
+  lokasi: 'Bpn go event, citraland Balikpapan',
   jam: '08.00 WITA',
 })
 /* ══════════════════════════════════════════════════ */
 
-// Date picker state and formatting
+// Date & time picker state and formatting
 const selectedDate = ref(new Date(2026, 6, 5))
+const selectedTime = ref('08:00')
+
+function formatTime(t){
+  if(!t) return ''
+  return t.replace(':', '.') + ' WITA'
+}
+
+watch(selectedTime, (val) => {
+  info.jam = formatTime(val)
+}, { immediate: true })
 const weekdaysName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
 const monthsName = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember']
 
