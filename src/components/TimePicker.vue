@@ -46,10 +46,10 @@ watch(() => props.modelValue, (v) => {
   selectedTime.value = v || ''
 })
 
-// generate hours 15:00 - 19:00 step 1 hour
+// generate hours 17:00 - 19:00 step 1 hour (start from 5 PM)
 const times = computed(() => {
   const arr = []
-  for (let h = 15; h <= 19; h++) {
+  for (let h = 17; h <= 19; h++) {
     const hh = String(h).padStart(2, '0')
     arr.push(`${hh}:00`)
   }
