@@ -2,8 +2,8 @@
   <div
     id="app"
     ref="appRef"
-    class="relative w-full min-h-screen overflow-hidden flex items-center justify-center p-4 sm:p-6"
-    style="background: linear-gradient(150deg, #fde8f0 0%, #ede0ff 50%, #fde8f0 100%);"
+    class="relative w-full min-h-screen overflow-hidden flex items-center justify-center p-4 sm:p-6 bg-no-repeat bg-fixed"
+    style="background: radial-gradient(circle at top left, rgba(251,146,60,0.18), transparent 28%), radial-gradient(circle at bottom right, rgba(168,85,247,0.14), transparent 32%), linear-gradient(150deg, #fde8f0 0%, #ede0ff 50%, #fde8f0 100%);"
   >
     <!-- Floating particles -->
     <div
@@ -23,42 +23,65 @@
       :style="c.style"
     ></div>
 
+    <!-- Top emoji background -->
+    <div class="pointer-events-none absolute inset-x-0 top-0 h-32 overflow-hidden">
+      <span class="absolute left-3 top-4 text-4xl text-white/40 animate-float-up" style="animation-duration: 9s; animation-delay: 0s;">✨</span>
+      <span class="absolute left-24 top-8 text-5xl text-white/30 animate-float-up" style="animation-duration: 11s; animation-delay: 1s;">🌸</span>
+      <span class="absolute right-16 top-6 text-4xl text-white/35 animate-float-up" style="animation-duration: 10s; animation-delay: 0.5s;">💕</span>
+      <span class="absolute right-6 top-14 text-3xl text-white/35 animate-float-up" style="animation-duration: 8s; animation-delay: 1.2s;">⭐</span>
+    </div>
+
     <!-- Page 1: Invite -->
     <div
-      class="bg-white/97 rounded-2xl sm:rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-lg"
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'invite' ? 'block animate-fade-in' : 'hidden'"
     >
-      <div class="inline-block animate-bounce-emoji text-5xl sm:text-[72px] mb-3">🐾</div>
+      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/80 shadow-yes animate-bounce-emoji text-5xl sm:text-[72px] mb-4">
+        🐾
+      </div>
 
       <h1 class="text-xl sm:text-2xl font-black leading-relaxed mb-2 text-rose-deep">
         🌸 Mau ke <span class="text-pink-accent">BPN Go</span> bareng aku? 🌸
       </h1>
+      <p class="text-rose-mid text-sm sm:text-base mb-7">
+        Serius deh? Coba hover tombol biar makin seru ✨
+      </p>
 
-      <div class="flex items-center justify-center flex-wrap gap-3">
+      <div class="flex items-center justify-center gap-3 flex-wrap">
         <button
           ref="yesBtnRef"
-          class="animate-pulse-btn bg-gradient-to-br from-[#e8638f] to-[#b02870] hover:scale-110 hover:brightness-110 active:scale-95 text-white border-none rounded-full px-6 sm:px-9 py-2.5 sm:py-3.5 text-sm sm:text-lg font-extrabold cursor-pointer shadow-lg transition-all duration-200"
+          class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 font-extrabold text-white shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
           @click="goToSurprised"
         >
           IYA dong! 🥰
         </button>
 
         <button
+          v-if="!noEscaped"
           ref="noBtnRef"
-          class="no-btn bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] hover:shadow-lg active:scale-95 text-white border-none rounded-full px-5 sm:px-6.5 py-2 sm:py-3 text-xs sm:text-base font-bold cursor-pointer shadow-md select-none whitespace-nowrap transition-all duration-200"
-          :class="{ 'fixed z-[999]': noEscaped }"
-          :style="noEscaped ? { left: noPos.x + 'px', top: noPos.y + 'px' } : {}"
+          class="rounded-full bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] px-6 py-3 font-bold text-white shadow-no transition duration-200 hover:-translate-y-0.5 active:scale-95"
           @mouseenter="moveNo"
           @touchstart.prevent="moveNo"
         >
           Gak mau 🐾
         </button>
       </div>
+
+      <button
+        v-if="noEscaped"
+        ref="noBtnRef"
+        class="fixed z-[999] bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] hover:shadow-lg active:scale-95 text-white border-none rounded-full px-5 sm:px-6.5 py-2 sm:py-3 text-xs sm:text-base font-bold cursor-pointer shadow-md select-none whitespace-nowrap transition-all duration-200"
+        :style="{ left: noPos.x + 'px', top: noPos.y + 'px' }"
+        @mouseenter="moveNo"
+        @touchstart.prevent="moveNo"
+      >
+        Gak mau 🐾
+      </button>
     </div>
 
     <!-- Page 2: Surprised -->
     <div
-      class="bg-white/97 rounded-2xl sm:rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-lg"
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'surprised' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-5xl sm:text-[72px] mb-3.5">🥹</div>
@@ -69,7 +92,7 @@
         Gue udah siap-siap lo bakal nolak 😅
       </p>
       <button
-        class="animate-pulse-btn bg-gradient-to-br from-[#e8638f] to-[#b02870] hover:scale-110 hover:brightness-110 active:scale-95 text-white border-none rounded-full px-6 sm:px-9 py-2.5 sm:py-3.5 text-sm sm:text-lg font-extrabold cursor-pointer shadow-lg transition-all duration-200"
+        class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 sm:px-9 py-2.5 sm:py-3.5 text-sm sm:text-lg font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
         @click="page = 'details'"
       >
         hehe lanjut dong →
@@ -78,7 +101,7 @@
 
     <!-- Page 3: Details -->
     <div
-      class="bg-white/97 rounded-2xl sm:rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-lg"
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'details' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-4xl sm:text-[56px] mb-2">🎉</div>
@@ -87,24 +110,24 @@
         Glad you didn't say no 💕
       </p>
 
-      <div class="bg-gradient-to-br from-[#fde8f0] to-[#f0e0ff] rounded-xl sm:rounded-2xl p-4 sm:p-5 mb-6 text-left">
-        <div class="flex gap-2 sm:gap-3 items-start mb-3">
-          <span class="text-lg sm:text-[22px] leading-none flex-shrink-0">📅</span>
-          <div>
+      <div class="grid justify-center gap-3 mb-6">
+        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm ">
+          <span class="text-2xl leading-none">📅</span>
+          <div class="text-left">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tanggal</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.tanggal }}</div>
           </div>
         </div>
-        <div class="flex gap-2 sm:gap-3 items-start mb-3">
-          <span class="text-lg sm:text-[22px] leading-none flex-shrink-0">📍</span>
-          <div>
+        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm">
+          <span class="text-2xl leading-none">📍</span>
+          <div class="text-left">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Lokasi</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.lokasi }}</div>
           </div>
         </div>
-        <div class="flex gap-2 sm:gap-3 items-start">
-          <span class="text-lg sm:text-[22px] leading-none flex-shrink-0">⏰</span>
-          <div>
+        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm">
+          <span class="text-2xl leading-none">⏰</span>
+          <div class="text-left">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Jam</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.jam }}</div>
           </div>

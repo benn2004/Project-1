@@ -19,7 +19,7 @@ body {
   animation: none !important;
 }
 
-/* No button escaped positioning */
-.no-btn.fixed {
+/* Escaped button smooth transition */
+button[style*="left"] {
   transition: left 0.07s ease-out, top 0.07s ease-out;
 }
