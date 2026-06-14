@@ -139,7 +139,7 @@
       </div>
 
       <p class="text-rose-mid text-sm sm:text-[15px] leading-loose">
-        Ntar ku jemput yakk <br />
+         Ntar ku jemput yakk ( btw tiketnya sudah ku beli ) <br />
         <span class="text-base sm:text-xl" style="letter-spacing: 4px;">------</span><br />
         <em class="text-xs text-rose-softer">
           Normal people text, w bikin web. No big deal 😎
