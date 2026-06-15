@@ -127,10 +127,10 @@
 
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">📍</span>
-          <div class="text-left">
+          <div class="text-left w-full">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tempat</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.location }}</div>
-            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-1">Btw, i've bought the tic already.</div>
+            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-1 text-center">Btw, i've bought the tic already.</div>
           </div>
         </div>
       </div>
@@ -160,12 +160,15 @@
         <div class="mt-3 text-xs text-[#7a4060]">Tempat: {{ info.location }}</div>
       </div>
 
-      <button
-        class="rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 text-sm sm:text-base font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
-        @click="page = 'invite'"
-      >
-        Mantap, lanjut! →
-      </button>
+      <p class="text-[#7a4060] text-sm sm:text-base text-center">
+        ill pick u up at 17.00 sharp, Be Ready!
+        see you at {{ info.location }} on {{ info.date }}. can't wait to have fun with youuu 🐾
+      </p>
+
+      <p class="text-rose-500 text-xs sm:text-sm text-center mt-4 italic">
+        Normal People Text, i made this eazy😎😎😎, Dont forget to screenshot this page and send to me 
+</p>
+      
     </div>
   </div>
 </template>
