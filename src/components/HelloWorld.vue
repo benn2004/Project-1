@@ -112,7 +112,7 @@
         Lokasi sudah fix di Citraland Balikpapan.
       </p>
       <p class="text-rose-mid text-xs sm:text-[13px] mb-6">
-        -------------------------
+        tanggal 5 aja, biar sekalian nonton konsernya juga hehe
       </p>
 
       <div class="grid gap-3 mb-6">
@@ -130,7 +130,7 @@
           <div class="text-left w-full">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tempat</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.location }}</div>
-            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-1 text-center">Btw, i've bought the tic already.</div>
+            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-10 text-center">✨ Btw, I've bought the ticket already ✨</div>
           </div>
         </div>
       </div>
@@ -166,7 +166,7 @@
       </p>
 
       <p class="text-rose-500 text-xs sm:text-sm text-center mt-4 italic">
-        Normal People Text, i made this eazy😎😎😎, Dont forget to screenshot this page and send to me 
+        Normal People Text, i made this eazy😎😎😎, 💫Dont forget to screenshot this page and send to me💫
 </p>
       
     </div>
