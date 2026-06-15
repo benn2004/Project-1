@@ -104,47 +104,68 @@
       :class="page === 'details' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-4xl sm:text-[56px] mb-2">🎉</div>
-      <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">BPN Go!</h1>
+      <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">Yuk ke BPN Go!</h1>
       <p class="text-pink-accent text-xs sm:text-[13px] font-bold mb-2">
-        Glad you didn't say no
+        Pilih tanggalnya dulu ya.
+      </p>
+      <p class="text-rose-mid text-xs sm:text-[13px] mb-3">
+        Lokasi sudah fix di Citraland Balikpapan.
       </p>
       <p class="text-rose-mid text-xs sm:text-[13px] mb-6">
-        Btw, pilih tanggal sama jamnya, pilih 5 juli aja ( nonton konser )
+        -------------------------
       </p>
 
-      <div class="flex flex-col gap-3 mb-6">
+      <div class="grid gap-3 mb-6">
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">📅</span>
           <div class="flex flex-col text-left w-full gap-1">
-            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Date</div>
+            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tanggal</div>
             <div class="w-full"><DatePicker v-model="selectedDate" /></div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.date }}</div>
           </div>
         </div>
+
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">📍</span>
           <div class="text-left">
-            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Location</div>
+            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tempat</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.location }}</div>
-          </div>
-        </div>
-        <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
-          <span class="text-2xl leading-none">⏰</span>
-          <div class="flex flex-col text-left w-full gap-1">
-            <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">At?</div>
-            <div class="w-full"><TimePicker v-model="selectedTime" /></div>
-            <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.time }}</div>
+            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-1">Btw, i've bought the tic already.</div>
           </div>
         </div>
       </div>
 
-      <p class="text-rose-mid text-sm sm:text-[15px] leading-loose">
-         Ntar ku jemput yakk ( btw tiketnya sudah ku beli ) <br />
-        <span class="text-base sm:text-xl" style="letter-spacing: 4px;">------</span><br />
-        <em class="text-xs text-rose-softer">
-          Normal people text, w bikin web. No big deal 😎
-        </em>
+      <button
+        class="rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 text-sm sm:text-base font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
+        @click="page = 'summary'"
+      >
+        Oke siap! →
+      </button>
+    </div>
+
+    <!-- Page 4: Summary -->
+    <div
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
+      :class="page === 'summary' ? 'block animate-fade-in' : 'hidden'"
+    >
+      <div class="text-4xl sm:text-[56px] mb-2">📌</div>
+      <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">Ringkasan tanggal</h1>
+      <p class="text-rose-mid text-xs sm:text-[13px] mb-6">
+        Ini tanggalnya ya, see yaa 💕
       </p>
+
+      <div class="rounded-3xl bg-white/80 p-5 shadow-sm text-left text-sm text-rose-deep mb-6">
+        <div class="mb-3 text-sm font-semibold text-rose-deep">Tanggal terpilih</div>
+        <div class="text-base font-bold">{{ info.date }}</div>
+        <div class="mt-3 text-xs text-[#7a4060]">Tempat: {{ info.location }}</div>
+      </div>
+
+      <button
+        class="rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 text-sm sm:text-base font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
+        @click="page = 'invite'"
+      >
+        Mantap, lanjut! →
+      </button>
     </div>
   </div>
 </template>
@@ -152,7 +173,6 @@
 <script setup>
 import { ref, reactive, onMounted, nextTick, watch } from 'vue'
 import DatePicker from './DatePicker.vue'
-import TimePicker from './TimePicker.vue'
 
 /* ══════════════════════════════════════════════════
  *  ✏️  GANTI INFO ACARA DI SINI
@@ -160,21 +180,11 @@ import TimePicker from './TimePicker.vue'
 const info = reactive({
   date: 'Sabtu, 5 Juli 2026',
   location: 'Bpn go event, citraland Balikpapan',
-  time: '08.00 WITA',
 })
 
-// Date & time picker state and formatting
+// Date picker state and formatting
 const selectedDate = ref(new Date(2026, 6, 5))
-const selectedTime = ref('08:00')
 
-function formatTime(t){
-  if(!t) return ''
-  return t.replace(':', '.') + ' WITA'
-}
-
-watch(selectedTime, (val) => {
-  info.time = formatTime(val)
-}, { immediate: true })
 const weekdaysName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
 const monthsName = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
 
