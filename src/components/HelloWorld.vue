@@ -54,7 +54,9 @@
         >
           Sounds good 
         </button>
-
+        <audio ref="audioRef" loop>
+    <source src="/music.mp3" type="audio/mpeg">
+        </audio>
         <button
           v-if="!noEscaped"
           ref="noBtnRef"
@@ -185,7 +187,7 @@ But I figured you deserve something cooler.
           class="rounded-full bg-gradient-to-br from-[#60a5fa] to-[#3b82f6] px-6 py-3 text-sm sm:text-base font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
           @click="page = 'extra'"
         >
-          Lihat halaman baru →
+          Nextt →
         </button>
       </div>
     </div>
@@ -374,7 +376,10 @@ function moveNo() {
   noPos.y = y
 }
 
+const audioRef = ref(null)
+
 function goToSurprised() {
+  audioRef.value?.play()
   page.value = 'surprised'
   nextTick(() => spawnConfetti())
 }
