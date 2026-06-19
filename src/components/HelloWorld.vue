@@ -33,23 +33,24 @@
 
     <!-- Page 1: Invite -->
     <div
-      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-card"
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-card flex flex-col justify-center min-h-[620px] gap-8"
       :class="page === 'invite' ? 'block animate-fade-in' : 'hidden'"
     >
-      <div class="text-lg sm:text-xl font-bold text-rose-deep mb-4">
-        Hai, Aziza Nur Injania 👀
-      </div>
+      <div class="space-y-2">
+        <div class="text-lg sm:text-xl font-bold text-rose-deep">
+          Hai, Aziza Nur Injania 👀
+        </div>
 
-      <h1 class="text-xl sm:text-2xl font-black leading-relaxed mb-2 text-rose-deep">
-        mau ga ke <span class="text-pink-accent">BPN Go</span> sama aku?
-      </h1>
-      <p class="text-rose-mid text-sm sm:text-base mb-7"></p>
+        <h1 class="text-xl sm:text-2xl font-black leading-relaxed text-rose-deep">
+          mau ga ke <span class="text-pink-accent">BPN Go</span> sama aku?
+        </h1>
+      </div>
 
       <audio ref="audioRef" preload="auto" loop>
         <source src="/music.mp3" type="audio/mpeg">
       </audio>
 
-      <div ref="buttonWrapperRef" class="relative flex items-center justify-center gap-3 flex-wrap">
+      <div ref="buttonWrapperRef" class="relative w-full min-h-[300px] flex items-center justify-center gap-3 flex-wrap rounded-3xl bg-white/0 p-3">
         <button
           ref="yesBtnRef"
           class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-8 py-3 font-extrabold text-black text-lg shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
@@ -197,7 +198,7 @@
         See you on {{ info.date }} ✨
       </p>
       <p class="text-xs italic text-[#9a6a86] fade-item delay-5">
-        Don't be late 😌
+        ----
       </p>
     </div>
   </div>
