@@ -37,7 +37,7 @@
       :class="page === 'invite' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/80 shadow-yes animate-bounce-emoji text-5xl sm:text-[72px] mb-4">
-        Hey Aziza Nur Injania 👀
+        Hii Aziza Nur Injania 👀
       </div>
 
       <h1 class="text-xl sm:text-2xl font-black leading-relaxed mb-2 text-rose-deep">
@@ -166,9 +166,9 @@ You just need to show up.</div>
       </div>
 
       <p class="text-[#7a4060] text-sm sm:text-base text-center">
-        See you on Sunday, 5 July 2026.
+        See you on Sunday, {{ info.date }}.
 
-I'll be there at 17.00.
+I'll pick you up at 17.00 Sharp.
 Don't keep me waiting 😌
         see you at {{ info.location }} on {{ info.date }}. 
         Looking forward to spending the day with you.
@@ -178,8 +178,69 @@ Don't keep me waiting 😌
         A simple chat would've worked.
 
 But I figured you deserve something cooler.
+      </p>
+
+      <div class="mt-6 flex justify-center">
+        <button
+          class="rounded-full bg-gradient-to-br from-[#60a5fa] to-[#3b82f6] px-6 py-3 text-sm sm:text-base font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
+          @click="page = 'extra'"
+        >
+          Lihat halaman baru →
+        </button>
+      </div>
+    </div>
+
+    <!-- Page 5: Extra -->
+    <div
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
+      :class="page === 'extra' ? 'block animate-fade-in' : 'hidden'"
+    >
+     <div class="text-5xl sm:text-[72px] mb-4 float-emoji">
+  💫✨
+</div>
+
+<h1
+  class="text-2xl sm:text-[32px] font-black mb-4 text-rose-deep fade-item"
+ 
+>
+  Final message 📩
+</h1>
+
+<p
+  class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-1"
+  
+>
+  Thanks for saying yes.
 </p>
-      
+
+<p
+  class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-2"
+ 
+>
+  I'm genuinely looking forward to spending the day with you.
+</p>
+
+<p
+  class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-3"
+  
+>
+  Now I officially have something to look forward to.
+</p>
+
+<p
+  class="font-semibold text-rose-deep text-base sm:text-lg mb-4 fade-item delay-4"
+  
+>
+  See you on {{ info.date }} ✨
+</p>
+
+<p
+  class="text-xs italic text-[#9a6a86] fade-item delay-5"
+  
+>
+  Don't be late 😌
+</p>
+
     </div>
   </div>
 </template>
@@ -208,9 +269,20 @@ function formatDate(d){
   return `${dayName}, ${d.getDate()} ${monthsName[d.getMonth()]} ${d.getFullYear()}`
 }
 
+const page = ref('invite')
+const showFinalMessage = ref(false)
 watch(selectedDate, (d) => {
   info.date = formatDate(d)
 }, { immediate: true })
+watch(page, (newPage) => {
+  if (newPage === 'extra') {
+    setTimeout(() => {
+      showFinalMessage.value = true
+    }, 300)
+  } else {
+    showFinalMessage.value = false
+  }
+})
 
 const CONFETTI_COLORS = ['#ff6b9d', '#d63384', '#a855f7', '#fbbf24', '#34d399', '#60a5fa', '#fb7185', '#f472b6']
 const PARTICLE_EMOJIS = ['🌸', '✨', '💕', '⭐', '🎉', '🌟', '💫', '🎈']
@@ -219,7 +291,7 @@ const appRef = ref(null)
 const noBtnRef = ref(null)
 const yesBtnRef = ref(null)
 
-const page = ref('invite')
+
 const noEscaped = ref(false)
 const noPos = reactive({ x: 0, y: 0 })
 
