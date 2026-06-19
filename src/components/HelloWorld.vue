@@ -49,7 +49,7 @@
         <source src="/music.mp3" type="audio/mpeg">
       </audio>
 
-      <div class="flex items-center justify-center gap-3 flex-wrap">
+      <div ref="buttonWrapperRef" class="relative flex items-center justify-center gap-3 flex-wrap">
         <button
           ref="yesBtnRef"
           class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-8 py-3 font-extrabold text-black text-lg shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
@@ -58,27 +58,17 @@
           Sounds good
         </button>
 
+        <!-- Satu button aja, class berubah dinamis -->
         <button
-          v-if="!noEscaped"
           ref="noBtnRef"
-          class="rounded-full bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] px-8 py-3 font-extrabold text-black text-lg shadow-no transition duration-200 hover:-translate-y-0.5 active:scale-95"
+          :class="[noEscaped ? 'absolute z-[999] shadow-md' : 'relative', 'rounded-full bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] px-8 py-3 font-extrabold text-black text-lg shadow-no select-none whitespace-nowrap active:scale-95 transition-all duration-200']"
+          :style="noEscaped ? { left: noPos.x + 'px', top: noPos.y + 'px' } : {}"
           @mouseenter="moveNo"
           @touchstart.prevent="moveNo"
         >
           {{ noText }}
         </button>
       </div>
-
-      <button
-        v-if="noEscaped"
-        ref="noBtnRef"
-        class="fixed z-[999] bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] hover:shadow-lg active:scale-95 text-black border-none rounded-full px-8 py-3 text-lg font-extrabold cursor-pointer shadow-md select-none whitespace-nowrap transition-all duration-200"
-        :style="{ left: noPos.x + 'px', top: noPos.y + 'px' }"
-        @mouseenter="moveNo"
-        @touchstart.prevent="moveNo"
-      >
-        {{ noText }}
-      </button>
     </div>
 
     <!-- Page 2: Surprised -->
@@ -191,7 +181,6 @@
       :class="page === 'extra' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-5xl sm:text-[72px] mb-4 float-emoji">💫✨</div>
-
       <h1 class="text-2xl sm:text-[32px] font-black mb-4 text-rose-deep fade-item">
         Final message 📩
       </h1>
@@ -254,11 +243,12 @@ const PARTICLE_EMOJIS = ['🌸','✨','💕','⭐','🎉','🌟','💫','🎈']
 
 const noBtnRef = ref(null)
 const yesBtnRef = ref(null)
+const buttonWrapperRef = ref(null)
 const audioRef = ref(null)
 
 const noEscaped = ref(false)
 const noPos = reactive({ x: 0, y: 0 })
-const noText = ref("Nope 🐾")  // ← fix: was missing
+const noText = ref("Nope 🐾")
 
 const noTexts = [
   "Nope 🐾",
@@ -331,20 +321,22 @@ function spawnConfetti() {
 
 function moveNo() {
   const btn = noBtnRef.value
-  if (!btn) return
+  const wrapper = buttonWrapperRef.value
+  if (!btn || !wrapper) return
 
-  const btnW = btn.offsetWidth || 50
+  const btnW = btn.offsetWidth || 130
   const btnH = btn.offsetHeight || 48
-  const margin = 15
+  const wrapperRect = wrapper.getBoundingClientRect()
+  const margin = 16
 
-  const maxX = window.innerWidth - btnW - margin
-  const maxY = (window.innerHeight * 0.85) - btnH - margin
+  const maxX = wrapperRect.width - btnW - margin
+  const maxY = wrapperRect.height - btnH - margin
 
-  noPos.x = margin + Math.random() * Math.max(0, maxX - margin)
-  noPos.y = margin + Math.random() * Math.max(0, maxY - margin)
+  noPos.x = margin + Math.random() * Math.max(0, maxX)
+  noPos.y = margin + Math.random() * Math.max(0, maxY)
 
   noText.value = noTexts[Math.floor(Math.random() * noTexts.length)]
-  noEscaped.value = true
+  noEscaped.value = true // set PALING TERAKHIR
 }
 
 function goToSurprised() {
