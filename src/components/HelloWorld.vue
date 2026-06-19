@@ -37,46 +37,47 @@
       :class="page === 'invite' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-lg sm:text-xl font-bold text-rose-deep mb-4">
-  Hai, Aziza Nur Injania 👀
-</div>
+        Hai, Aziza Nur Injania 👀
+      </div>
 
       <h1 class="text-xl sm:text-2xl font-black leading-relaxed mb-2 text-rose-deep">
-         mau ga ke <span class="text-pink-accent">BPN Go</span> sama aku? 
+        mau ga ke <span class="text-pink-accent">BPN Go</span> sama aku?
       </h1>
-      <p class="text-rose-mid text-sm sm:text-base mb-7">
-      </p>
+      <p class="text-rose-mid text-sm sm:text-base mb-7"></p>
+
+      <audio ref="audioRef" preload="auto" loop>
+        <source src="/music.mp3" type="audio/mpeg">
+      </audio>
 
       <div class="flex items-center justify-center gap-3 flex-wrap">
         <button
           ref="yesBtnRef"
-          class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 font-extrabold text-black shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
+          class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-8 py-3 font-extrabold text-black text-lg shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
           @click="goToSurprised"
         >
-          Sounds good 
+          Sounds good
         </button>
-        <audio ref="audioRef" preload="auto" loop>
-  <source src="/music.mp3" type="audio/mpeg">
-</audio>
+
         <button
           v-if="!noEscaped"
           ref="noBtnRef"
-          class="rounded-full bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] px-6 py-3 font-bold text-black shadow-no transition duration-200 hover:-translate-y-0.5 active:scale-95"
+          class="rounded-full bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] px-8 py-3 font-extrabold text-black text-lg shadow-no transition duration-200 hover:-translate-y-0.5 active:scale-95"
           @mouseenter="moveNo"
           @touchstart.prevent="moveNo"
         >
-          Nope 🐾
+          {{ noText }}
         </button>
       </div>
 
       <button
         v-if="noEscaped"
         ref="noBtnRef"
-        class="fixed z-[999] bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] hover:shadow-lg active:scale-95 text-black border-none rounded-full px-5 sm:px-6.5 py-2 sm:py-3 text-xs sm:text-base font-bold cursor-pointer shadow-md select-none whitespace-nowrap transition-all duration-200"
+        class="fixed z-[999] bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] hover:shadow-lg active:scale-95 text-black border-none rounded-full px-8 py-3 text-lg font-extrabold cursor-pointer shadow-md select-none whitespace-nowrap transition-all duration-200"
         :style="{ left: noPos.x + 'px', top: noPos.y + 'px' }"
         @mouseenter="moveNo"
         @touchstart.prevent="moveNo"
       >
-        Nope 🐾
+        {{ noText }}
       </button>
     </div>
 
@@ -108,11 +109,7 @@
       <div class="text-4xl sm:text-[56px] mb-2">🎉</div>
       <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">BPN Go, here we come 🎉</h1>
       <p class="text-pink-accent text-xs sm:text-[13px] font-bold mb-2">
-        Nothing too fancy.
-
-Just good music,
-good vibes,
-and hopefully good company too.
+        Nothing too fancy. Just good music, good vibes, and hopefully good company too.
       </p>
       <p class="text-rose-mid text-xs sm:text-[13px] mb-3">
         Lokasi sudah fix di Citraland Balikpapan.
@@ -136,8 +133,7 @@ and hopefully good company too.
           <div class="text-left w-full">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tempat</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.location }}</div>
-            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-10 text-center">Ticket? Already secured ✅
-You just need to show up.</div>
+            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-10 text-center">Ticket? Already secured ✅ You just need to show up.</div>
           </div>
         </div>
       </div>
@@ -169,17 +165,14 @@ You just need to show up.</div>
 
       <p class="text-[#7a4060] text-sm sm:text-base text-center">
         See you on Sunday, {{ info.date }}.
-
-I'll pick you up at 17.00 Sharp.
-Don't keep me waiting 😌
-        see you at {{ info.location }} on {{ info.date }}. 
+        I'll pick you up at 17.00 Sharp.
+        Don't keep me waiting 😌
+        see you at {{ info.location }} on {{ info.date }}.
         Looking forward to spending the day with you.
       </p>
 
       <p class="text-rose-600 text-xs sm:text-sm text-center mt-3 italic">
-        A simple chat would've worked.
-
-But I figured you deserve something cooler.
+        A simple chat would've worked. But I figured you deserve something cooler.
       </p>
 
       <div class="mt-6 flex justify-center">
@@ -197,52 +190,26 @@ But I figured you deserve something cooler.
       class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'extra' ? 'block animate-fade-in' : 'hidden'"
     >
-     <div class="text-5xl sm:text-[72px] mb-4 float-emoji">
-  💫✨
-</div>
+      <div class="text-5xl sm:text-[72px] mb-4 float-emoji">💫✨</div>
 
-<h1
-  class="text-2xl sm:text-[32px] font-black mb-4 text-rose-deep fade-item"
- 
->
-  Final message 📩
-</h1>
-
-<p
-  class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-1"
-  
->
-  Thanks for saying yes.
-</p>
-
-<p
-  class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-2"
- 
->
-  I'm genuinely looking forward to spending the day with you.
-</p>
-
-<p
-  class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-3"
-  
->
-  Now I officially have something to look forward to.
-</p>
-
-<p
-  class="font-semibold text-rose-deep text-base sm:text-lg mb-4 fade-item delay-4"
-  
->
-  See you on {{ info.date }} ✨
-</p>
-
-<p
-  class="text-xs italic text-[#9a6a86] fade-item delay-5"
-  
->
-  Don't be late 😌
-</p>
-
+      <h1 class="text-2xl sm:text-[32px] font-black mb-4 text-rose-deep fade-item">
+        Final message 📩
+      </h1>
+      <p class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-1">
+        Thanks for saying yes.
+      </p>
+      <p class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-2">
+        I'm genuinely looking forward to spending the day with you.
+      </p>
+      <p class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-3">
+        Now I officially have something to look forward to.
+      </p>
+      <p class="font-semibold text-rose-deep text-base sm:text-lg mb-4 fade-item delay-4">
+        See you on {{ info.date }} ✨
+      </p>
+      <p class="text-xs italic text-[#9a6a86] fade-item delay-5">
+        Don't be late 😌
+      </p>
     </div>
   </div>
 </template>
@@ -251,51 +218,59 @@ But I figured you deserve something cooler.
 import { ref, reactive, onMounted, nextTick, watch } from 'vue'
 import DatePicker from './DatePicker.vue'
 
-/* ══════════════════════════════════════════════════
- *  ✏️  GANTI INFO ACARA DI SINI
- * ══════════════════════════════════════════════════ */
 const info = reactive({
   date: 'Sabtu, 5 Juli 2026',
   location: 'Bpn go event, citraland Balikpapan',
 })
 
-// Date picker state and formatting
 const selectedDate = ref(new Date(2026, 6, 5))
 
 const weekdaysName = ['Minggu','Senin','Selasa','Rabu','Kamis','Jumat','Sabtu']
-const monthsName = ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus', 'September', 'Oktober', 'November', 'Desember']
+const monthsName = ['Januari','Februari','Maret','April','Mei','Juni','Juli','Agustus','September','Oktober','November','Desember']
 
-function formatDate(d){
-  if(!d) return ''
+function formatDate(d) {
+  if (!d) return ''
   const dayName = weekdaysName[d.getDay()]
   return `${dayName}, ${d.getDate()} ${monthsName[d.getMonth()]} ${d.getFullYear()}`
 }
 
 const page = ref('invite')
 const showFinalMessage = ref(false)
+
 watch(selectedDate, (d) => {
   info.date = formatDate(d)
 }, { immediate: true })
+
 watch(page, (newPage) => {
   if (newPage === 'extra') {
-    setTimeout(() => {
-      showFinalMessage.value = true
-    }, 300)
+    setTimeout(() => { showFinalMessage.value = true }, 300)
   } else {
     showFinalMessage.value = false
   }
 })
 
-const CONFETTI_COLORS = ['#ff6b9d', '#d63384', '#a855f7', '#fbbf24', '#34d399', '#60a5fa', '#fb7185', '#f472b6']
-const PARTICLE_EMOJIS = ['🌸', '✨', '💕', '⭐', '🎉', '🌟', '💫', '🎈']
+const CONFETTI_COLORS = ['#ff6b9d','#d63384','#a855f7','#fbbf24','#34d399','#60a5fa','#fb7185','#f472b6']
+const PARTICLE_EMOJIS = ['🌸','✨','💕','⭐','🎉','🌟','💫','🎈']
 
-const appRef = ref(null)
 const noBtnRef = ref(null)
 const yesBtnRef = ref(null)
-
+const audioRef = ref(null)
 
 const noEscaped = ref(false)
 const noPos = reactive({ x: 0, y: 0 })
+const noText = ref("Nope 🐾")  // ← fix: was missing
+
+const noTexts = [
+  "Nope 🐾",
+  "Yakin? 😏",
+  "Ga bisa 🤣",
+  "Kejar aku dulu 😎",
+  "Coba lagi 🙈",
+  "Wrong button 😌",
+  "Klik yang pink aja ✨",
+  "Ayo yang kiri 👉",
+  "Wkwkwk 😭"
+]
 
 const particles = ref([])
 const confettiPieces = ref([])
@@ -331,8 +306,8 @@ function spawnConfetti() {
     const size = 7 + Math.random() * 10
     const angle = Math.random() * 360
     const circle = Math.random() > 0.5
-
     const id = confettiCounter++
+
     confettiPieces.value.push({
       id,
       style: {
@@ -356,37 +331,30 @@ function spawnConfetti() {
 
 function moveNo() {
   const btn = noBtnRef.value
-  const app = appRef.value
-  if (!btn || !app) return
+  if (!btn) return
 
-  const bW = btn.offsetWidth || 80
-  const bH = btn.offsetHeight || 40
-  const wW = window.innerWidth
-  const wH = window.innerHeight
+  const btnW = btn.offsetWidth || 50
+  const btnH = btn.offsetHeight || 48
+  const margin = 15
 
-  // Ensure button stays within viewport bounds
-  const maxX = Math.max(0, wW - bW - 16)
-  const maxY = Math.max(0, wH - bH - 16)
-  
-  const x = 16 + Math.random() * maxX
-  const y = 16 + Math.random() * maxY
+  const maxX = window.innerWidth - btnW - margin
+  const maxY = (window.innerHeight * 0.85) - btnH - margin
 
+  noPos.x = margin + Math.random() * Math.max(0, maxX - margin)
+  noPos.y = margin + Math.random() * Math.max(0, maxY - margin)
+
+  noText.value = noTexts[Math.floor(Math.random() * noTexts.length)]
   noEscaped.value = true
-  noPos.x = x
-  noPos.y = y
 }
-
-const audioRef = ref(null)
 
 function goToSurprised() {
   audioRef.value?.play()
-
   page.value = 'surprised'
   nextTick(() => spawnConfetti())
 }
+
 onMounted(() => {
   createParticles()
-
   if (audioRef.value) {
     audioRef.value.load()
   }
