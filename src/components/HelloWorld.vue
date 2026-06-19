@@ -33,15 +33,14 @@
 
     <!-- Page 1: Invite -->
     <div
-      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-card flex flex-col justify-center min-h-[620px] gap-8"
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-card flex flex-col justify-center min-h-[540px] sm:min-h-[620px] gap-5 sm:gap-8"
       :class="page === 'invite' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="space-y-2">
-        <div class="text-lg sm:text-xl font-bold text-rose-deep">
+        <div class="text-base sm:text-xl font-bold text-rose-deep">
           Hai, Aziza Nur Injania 👀
         </div>
-
-        <h1 class="text-xl sm:text-2xl font-black leading-relaxed text-rose-deep">
+        <h1 class="text-lg sm:text-2xl font-black leading-relaxed text-rose-deep">
           mau ga ke <span class="text-pink-accent">BPN Go</span> sama aku?
         </h1>
       </div>
@@ -59,7 +58,6 @@
           Sounds good
         </button>
 
-        <!-- Satu button aja, class berubah dinamis -->
         <button
           ref="noBtnRef"
           :class="[noEscaped ? 'absolute z-[999] shadow-md' : 'relative', 'rounded-full bg-gradient-to-br from-[#c4a3d4] to-[#9060b0] px-8 py-3 font-extrabold text-black text-lg shadow-no select-none whitespace-nowrap active:scale-95 transition-all duration-200']"
@@ -78,14 +76,14 @@
       :class="page === 'surprised' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-5xl sm:text-[72px] mb-3.5">😆</div>
-      <h1 class="text-lg sm:text-[26px] font-black mb-3 text-rose-deep">
+      <h1 class="text-xl sm:text-[26px] font-black mb-3 text-rose-deep">
         Not gonna lie,
       </h1>
-      <p class="text-rose-mid text-sm sm:text-base mb-9">
+      <p class="text-rose-mid text-base mb-9">
         I was hoping for that answer.
       </p>
       <button
-        class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 sm:px-9 py-2.5 sm:py-3.5 text-sm sm:text-lg font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
+        class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 sm:px-9 py-2.5 sm:py-3.5 text-base sm:text-lg font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
         @click="page = 'details'"
       >
         Let's go →
@@ -94,28 +92,28 @@
 
     <!-- Page 3: Details -->
     <div
-      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-5 sm:px-7 py-6 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'details' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-4xl sm:text-[56px] mb-2">🎉</div>
-      <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">BPN Go, here we come 🎉</h1>
-      <p class="text-pink-accent text-xs sm:text-[13px] font-bold mb-2">
+      <h1 class="text-xl sm:text-[32px] font-black mb-1 text-rose-deep">BPN Go, here we come 🎉</h1>
+      <p class="text-pink-accent text-sm sm:text-[15px] font-bold mb-2">
         Nothing too fancy. Just good music, good vibes, and hopefully good company too.
       </p>
-      <p class="text-rose-mid text-xs sm:text-[13px] mb-3">
+      <p class="text-rose-mid text-sm sm:text-[15px] mb-3">
         Lokasi sudah fix di Citraland Balikpapan.
       </p>
-      <p class="text-rose-mid text-xs sm:text-[13px] mb-6">
+      <p class="text-rose-mid text-sm sm:text-[15px] mb-4">
         tanggal 5 aja, biar sekalian nonton konsernya juga hehe
       </p>
 
-      <div class="grid gap-3 mb-6">
+      <div class="grid gap-3 mb-5">
         <div class="flex gap-3 items-start rounded-3xl bg-white/80 p-4 shadow-sm w-full">
           <span class="text-2xl leading-none">📅</span>
           <div class="flex flex-col text-left w-full gap-1">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tanggal</div>
             <div class="w-full"><DatePicker v-model="selectedDate" /></div>
-            <div class="text-[#7a4060] text-xs sm:text-sm mt-1">{{ info.date }}</div>
+            <div class="text-[#7a4060] text-sm mt-1">{{ info.date }}</div>
           </div>
         </div>
 
@@ -123,8 +121,8 @@
           <span class="text-2xl leading-none">📍</span>
           <div class="text-left w-full">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tempat</div>
-            <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.location }}</div>
-            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-10 text-center">Ticket? Already secured ✅ You just need to show up.</div>
+            <div class="text-[#7a4060] text-sm mt-0.5">{{ info.location }}</div>
+            <div class="text-[#7a4060] text-sm mt-6 text-center">Ticket? Already secured ✅ You just need to show up.</div>
           </div>
         </div>
       </div>
@@ -139,19 +137,19 @@
 
     <!-- Page 4: Summary -->
     <div
-      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-5 sm:px-7 py-6 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'summary' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-4xl sm:text-[56px] mb-2">📌 (Screenshot this page yaa, send it to me so i know the date u picked)</div>
-      <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">Ringkasan tanggal</h1>
-      <p class="text-rose-mid text-xs sm:text-[13px] mb-6">
+      <h1 class="text-xl sm:text-[32px] font-black mb-1 text-rose-deep">Ringkasan tanggal</h1>
+      <p class="text-rose-mid text-sm mb-6">
         Ini tanggalnya ya, see yaa 💕
       </p>
 
       <div class="rounded-3xl bg-white/80 p-5 shadow-sm text-left text-sm text-rose-deep mb-6">
         <div class="mb-3 text-sm font-semibold text-rose-deep">Choosen Date:</div>
         <div class="text-base font-bold">{{ info.date }}</div>
-        <div class="mt-3 text-xs text-[#7a4060]">loc 📍 : {{ info.location }}</div>
+        <div class="mt-3 text-sm text-[#7a4060]">loc 📍 : {{ info.location }}</div>
       </div>
 
       <p class="text-[#7a4060] text-sm sm:text-base text-center">
@@ -162,7 +160,7 @@
         Looking forward to spending the day with you.
       </p>
 
-      <p class="text-rose-600 text-xs sm:text-sm text-center mt-3 italic">
+      <p class="text-rose-600 text-sm text-center mt-3 italic">
         A simple chat would've worked. But I figured you deserve something cooler.
       </p>
 
@@ -178,11 +176,11 @@
 
     <!-- Page 5: Extra -->
     <div
-      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
+      class="bg-white/90 backdrop-blur-xl rounded-[28px] px-5 sm:px-7 py-6 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'extra' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-5xl sm:text-[72px] mb-4 float-emoji">💫✨</div>
-      <h1 class="text-2xl sm:text-[32px] font-black mb-4 text-rose-deep fade-item">
+      <h1 class="text-xl sm:text-[32px] font-black mb-4 text-rose-deep fade-item">
         Final message 📩
       </h1>
       <p class="text-rose-mid text-sm sm:text-base leading-relaxed mb-4 fade-item delay-1">
@@ -197,7 +195,7 @@
       <p class="font-semibold text-rose-deep text-base sm:text-lg mb-4 fade-item delay-4">
         See you on {{ info.date }} ✨
       </p>
-      <p class="text-xs italic text-[#9a6a86] fade-item delay-5">
+      <p class="text-sm italic text-[#9a6a86] fade-item delay-5">
         ----
       </p>
     </div>
@@ -337,7 +335,7 @@ function moveNo() {
   noPos.y = margin + Math.random() * Math.max(0, maxY)
 
   noText.value = noTexts[Math.floor(Math.random() * noTexts.length)]
-  noEscaped.value = true // set PALING TERAKHIR
+  noEscaped.value = true
 }
 
 function goToSurprised() {
