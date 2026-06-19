@@ -36,9 +36,9 @@
       class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-8 py-8 sm:py-11 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'invite' ? 'block animate-fade-in' : 'hidden'"
     >
-      <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/80 shadow-yes animate-bounce-emoji text-5xl sm:text-[72px] mb-4">
-        Hii Aziza Nur Injania 👀
-      </div>
+      <div class="text-lg sm:text-xl font-bold text-rose-deep mb-4">
+  Hai, Aziza Nur Injania 👀
+</div>
 
       <h1 class="text-xl sm:text-2xl font-black leading-relaxed mb-2 text-rose-deep">
          mau ga ke <span class="text-pink-accent">BPN Go</span> sama aku? 
@@ -54,9 +54,9 @@
         >
           Sounds good 
         </button>
-        <audio ref="audioRef" loop>
-    <source src="/music.mp3" type="audio/mpeg">
-        </audio>
+        <audio ref="audioRef" preload="auto" loop>
+  <source src="/music.mp3" type="audio/mpeg">
+</audio>
         <button
           v-if="!noEscaped"
           ref="noBtnRef"
@@ -380,11 +380,15 @@ const audioRef = ref(null)
 
 function goToSurprised() {
   audioRef.value?.play()
+
   page.value = 'surprised'
   nextTick(() => spawnConfetti())
 }
-
 onMounted(() => {
   createParticles()
+
+  if (audioRef.value) {
+    audioRef.value.load()
+  }
 })
 </script>
