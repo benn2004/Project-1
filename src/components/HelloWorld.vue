@@ -37,7 +37,7 @@
       :class="page === 'invite' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="inline-flex items-center justify-center w-20 h-20 rounded-full bg-white/80 shadow-yes animate-bounce-emoji text-5xl sm:text-[72px] mb-4">
-        🐾
+        Hey Aziza Nur Injania 👀
       </div>
 
       <h1 class="text-xl sm:text-2xl font-black leading-relaxed mb-2 text-rose-deep">
@@ -52,7 +52,7 @@
           class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 py-3 font-extrabold text-black shadow-yes transition duration-200 hover:scale-105 hover:brightness-110"
           @click="goToSurprised"
         >
-          IYA dong! 
+          Sounds good 
         </button>
 
         <button
@@ -62,7 +62,7 @@
           @mouseenter="moveNo"
           @touchstart.prevent="moveNo"
         >
-          Gak mau 🐾
+          Nope 🐾
         </button>
       </div>
 
@@ -74,7 +74,7 @@
         @mouseenter="moveNo"
         @touchstart.prevent="moveNo"
       >
-        Gak mau 🐾
+        Nope 🐾
       </button>
     </div>
 
@@ -85,16 +85,16 @@
     >
       <div class="text-5xl sm:text-[72px] mb-3.5">😆</div>
       <h1 class="text-lg sm:text-[26px] font-black mb-3 text-rose-deep">
-        Beneran mauuu
+        Not gonna lie,
       </h1>
       <p class="text-rose-mid text-sm sm:text-base mb-9">
-        Gabisa dibatalin lohh
+        I was hoping for that answer.
       </p>
       <button
         class="animate-pulse-btn rounded-full bg-gradient-to-br from-[#e8638f] to-[#b02870] px-6 sm:px-9 py-2.5 sm:py-3.5 text-sm sm:text-lg font-extrabold text-white shadow-yes transition duration-200 hover:-translate-y-0.5 active:scale-95"
         @click="page = 'details'"
       >
-        oke lanjutttttt →
+        Let's go →
       </button>
     </div>
 
@@ -104,9 +104,13 @@
       :class="page === 'details' ? 'block animate-fade-in' : 'hidden'"
     >
       <div class="text-4xl sm:text-[56px] mb-2">🎉</div>
-      <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">Yuk ke BPN Go!</h1>
+      <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">BPN Go, here we come 🎉</h1>
       <p class="text-pink-accent text-xs sm:text-[13px] font-bold mb-2">
-        Pilih tanggalnya dulu ya.
+        Nothing too fancy.
+
+Just good music,
+good vibes,
+and hopefully good company too.
       </p>
       <p class="text-rose-mid text-xs sm:text-[13px] mb-3">
         Lokasi sudah fix di Citraland Balikpapan.
@@ -130,7 +134,8 @@
           <div class="text-left w-full">
             <div class="font-extrabold text-rose-deep text-sm sm:text-[15px]">Tempat</div>
             <div class="text-[#7a4060] text-xs sm:text-sm mt-0.5">{{ info.location }}</div>
-            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-10 text-center">✨ Btw, I've bought the ticket already ✨</div>
+            <div class="text-[#7a4060] text-[15px] sm:text-xs mt-10 text-center">Ticket? Already secured ✅
+You just need to show up.</div>
           </div>
         </div>
       </div>
@@ -148,25 +153,31 @@
       class="bg-white/90 backdrop-blur-xl rounded-[28px] px-6 sm:px-7 py-8 sm:py-10 text-center w-full max-w-[420px] relative z-[5] shadow-card"
       :class="page === 'summary' ? 'block animate-fade-in' : 'hidden'"
     >
-      <div class="text-4xl sm:text-[56px] mb-2">📌</div>
+      <div class="text-4xl sm:text-[56px] mb-2">📌 (Screenshot this page yaa, send it to me so i know the date u picked)</div>
       <h1 class="text-2xl sm:text-[32px] font-black mb-1 text-rose-deep">Ringkasan tanggal</h1>
       <p class="text-rose-mid text-xs sm:text-[13px] mb-6">
         Ini tanggalnya ya, see yaa 💕
       </p>
 
       <div class="rounded-3xl bg-white/80 p-5 shadow-sm text-left text-sm text-rose-deep mb-6">
-        <div class="mb-3 text-sm font-semibold text-rose-deep">Tanggal terpilih</div>
+        <div class="mb-3 text-sm font-semibold text-rose-deep">Choosen Date:</div>
         <div class="text-base font-bold">{{ info.date }}</div>
-        <div class="mt-3 text-xs text-[#7a4060]">Tempat: {{ info.location }}</div>
+        <div class="mt-3 text-xs text-[#7a4060]">loc 📍 : {{ info.location }}</div>
       </div>
 
       <p class="text-[#7a4060] text-sm sm:text-base text-center">
-        ill pick u up at 17.00 sharp, Be Ready!
-        see you at {{ info.location }} on {{ info.date }}. can't wait to have fun with youuu 🐾
+        See you on Sunday, 5 July 2026.
+
+I'll be there at 17.00.
+Don't keep me waiting 😌
+        see you at {{ info.location }} on {{ info.date }}. 
+        Looking forward to spending the day with you.
       </p>
 
-      <p class="text-rose-500 text-xs sm:text-sm text-center mt-4 italic">
-        Normal People Text, i made this eazy😎😎😎, 💫Dont forget to screenshot this page and send to me💫
+      <p class="text-rose-600 text-xs sm:text-sm text-center mt-3 italic">
+        A simple chat would've worked.
+
+But I figured you deserve something cooler.
 </p>
       
     </div>
