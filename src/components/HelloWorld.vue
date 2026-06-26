@@ -41,7 +41,7 @@
           Hai, Aziza Nur Injania 👀
         </div>
         <h1 class="text-lg sm:text-2xl font-black leading-relaxed text-rose-deep">
-          mau ga ke <span class="text-pink-accent">BPN Go</span> sama aku?
+          Would u go to <span class="text-pink-accent">BPN Go</span> with me ?
         </h1>
       </div>
 
